@@ -46,10 +46,10 @@ export const CardNum = () => {
         for(let i = 0; i < myCnt; i ++) {
             const index = await NFT.methods.tokenOfOwnerByIndex(account[0], i).call()
             console.log(index)
-            let url = await NFT.methods.tokenURI(index).call()
-            url = url.replace("ipfs://", "ipfs/")
-            console.log(`https://ipfs.io/${url}`)
-            const res = await axios.get(`https://ipfs.io/${url}`)
+            const url = await NFT.methods.tokenURI(index).call()
+            // url = url.replace("ipfs://", "ipfs/")
+            // console.log(`https://ipfs.io/${url}`)
+            const res = await axios.get(`${url}`)
             const nft = {
                 name: res.data.edition,
                 image: res.data.image,
